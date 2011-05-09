@@ -404,11 +404,13 @@
     \end{alltt}
     \end{footnotesize}
   \end{exampleblock}
-\begin{frame}
 \end{frame}
+\begin{frame}
   \frametitle{The regular expression, broken down}
 
-  {\tt $[$0-9$]$} means "any digit from 0 to 9"
+  {\tt $[$} and {\tt $]$} define a class of characters: any of these
+
+  {\tt 0-9} means "the range from 0 to 9". ASCII characters may also be used (a-z, A-Z).
 
   {\tt $+$} means "match one or more"
   
