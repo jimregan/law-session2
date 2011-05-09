@@ -22,6 +22,7 @@
 \usepackage{ragged2e} 
 \usepackage{wasysym}
 \usepackage{alltt}
+\usepackage{epigraph}
 
 \usetheme{Warsaw}
 
@@ -319,7 +320,10 @@
       ~~</e> \\
     \end{alltt}
     \end{footnotesize}
-\end{exampleblock}
+  \end{exampleblock}
+
+  (Recall that {\tt $<$i$>$} is the same as {\tt $<$p$>$}
+  where {\tt $<$l$>$} and {\tt $<$r$>$} are identical.)
 \end{frame}
 \begin{frame}
   \frametitle{Words to multiwords /2}
@@ -333,7 +337,7 @@
       ~~</e> \\
     \end{alltt}
     \end{footnotesize}
-\end{exampleblock}
+  \end{exampleblock}
 \end{frame}
 \begin{frame}
   \frametitle{The b tag}
@@ -357,12 +361,25 @@
       ~<par n="house\_\_n> \\
       ~<p> \\
       ~~<l><b/>of<b/>God</l> \\
-      ~~</r><g><b/>of<b/>God</g></r> \\
+      ~~<r><g><b/>of<b/>God</g></r> \\
       ~</p> \\
       </e> \\
     \end{alltt}
     \end{footnotesize}
   \end{exampleblock}
 \end{frame}
+\begin{frame}
+  \frametitle{The g tag}
+  The {\tt $<$g$>$} tag represents a {\it group} of words, that
+  follow a word that inflects.
+
+  The words within the group do not change.
+\end{frame}
+
+\section{Regular Expressions}
+\begin{frame}
+  \epigraph{Some people, when confronted with a problem, think "I know, I'll use regular expressions." Now they have two problems.}{Jamie Zawinski}
+\end{frame}
+
 
 \end{document}
