@@ -438,6 +438,65 @@
 
   Unlike other regular expression dialects, '.' is not special.
 \end{frame}
+\begin{frame}
+  \frametitle{Regular expressions in translation}
 
+  Regular expressions may be used in the bilingual dictionary too.
+
+  The bilingual regular expression does not need to match the monolingual.
+
+  \pause
+
+  In fact, when coupled with the tree-like nature of XML, we can translate some complicated things 
+  without using rules.
+\end{frame}
+\begin{frame}
+\frametitle{Bilingual regular expressions}
+
+ \begin{center}
+ {\Large Hic Sunt Dracones!}
+ \end{center}
+\end{frame}
+\begin{frame}
+  \frametitle{Example regular expression}
+
+  \begin{exampleblock}{An example}
+    \begin{footnotesize}
+    \begin{alltt}
+      <e> \\
+      ~<re>[0-9]+</re> \\
+      ~<i>/</i> \\
+      ~<re>[0-9]+</re> \\
+      ~<i>/</i> \\
+      ~<p> \\
+      ~~<l>EU<s n="n"/></l> \\
+      ~~<r>UE<s n="n"/><s n="f"/></r> \\
+      ~</p> \\
+      </e> \\
+    \end{alltt}
+    \end{footnotesize}
+  \end{exampleblock}
+
+  This allows us to translate EU directive numbers between English and Spanish.
+
+  \pause
+
+  (We treat is as a noun, because they behave more like nouns; feminine, from the implicite "directiva")
+\end{frame}
+\begin{frame}
+\frametitle{A rule for regular expressions}
+
+ \begin{center}
+ {\Large When in Doubt: Ask a Programmer}
+ \end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{End}
+
+ \begin{center}
+ Thank you.
+ \end{center}
+\end{frame}
 
 \end{document}
