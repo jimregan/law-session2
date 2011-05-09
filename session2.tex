@@ -417,6 +417,27 @@
   The {\tt $<$p$>$} tag attaches the symbol {\tt num} (number) to 
   the output.
 \end{frame}
+\begin{frame}
+  \frametitle{Apertium's subset of regular expressions}
+
+  \begin{exampleblock}{Special characters:}
+    \begin{tabular}{ll}
+      $[$ & Start of class \\
+      $]$ & End of class \\
+      \hline
+      $-$ & Range divider \\
+      \hline
+      $($ & Start of group \\
+      $}$ & End of group \\
+      \hline
+      ? & Zero or one \\
+      * & Zero or more \\
+      $+$ & One or more \\
+    \end{tabular}
+  \end{exampleblock}
+
+  Unlike other regular expression dialects, '.' is not special.
+\end{frame}
 
 
 \end{document}
