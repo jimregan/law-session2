@@ -251,7 +251,25 @@
   \frametitle{Enclitics}
   Many of the Romance languages that Apertium was originally designed for use {\it enclitic pronouns}:
 
-  d\'imelo = di_{{\it Verb, Imperative}} $+$ me_{{\it Prn}} $+$ lo_{{\it Prn}}
+  d\'imelo = decir_{{\it Verb, Imperative}} $+$ me_{{\it Prn}} $+$ lo_{{\it Prn}}
+\end{frame}
+
+\section{The j tag}
+\begin{frame}
+  \frametitle{The J tag}
+  The {\tt $<$j/$>$} tag tells the analyser that it is to analyse the input as {\it joined} words:
+  \begin{exampleblock}{Paradigms are also used to normalise}
+    \begin{footnotesize}
+    \begin{alltt}
+      ~~<e> \\
+      ~~~~<p> \\
+      ~~~~~~<l>d</l> \\
+      ~~~~~~<r>decir<s n="vblex"><j/>me<s n="prn"/><j/>lo<s n="prn"/></r> \\
+      ~~~~</p> \\
+      ~~</e> \\
+    \end{alltt}
+    \end{footnotesize}
+\end{exampleblock}
 \end{frame}
 
 \end{document}
