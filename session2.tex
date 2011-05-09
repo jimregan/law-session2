@@ -254,11 +254,10 @@
   d\'imelo = decir_{{\it Verb, Imperative}} $+$ me_{{\it Prn}} $+$ lo_{{\it Prn}}
 \end{frame}
 
-\section{The j tag}
 \begin{frame}
   \frametitle{The J tag}
   The {\tt $<$j/$>$} tag tells the analyser that it is to analyse the input as {\it joined} words:
-  \begin{exampleblock}{Paradigms are also used to normalise}
+  \begin{exampleblock}{Joined words}
     \begin{footnotesize}
     \begin{alltt}
       <e><p> \\
@@ -268,6 +267,46 @@
     \end{alltt}
     \end{footnotesize}
 \end{exampleblock}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Multiwords}
+  Just as a single "word" may in fact be composed of joined words, 
+  a sequence of words may have a unique meaning as a unit.
+  More importantly, a multiword unit may have a translation different
+  to the translations of its parts: a "petty officer" is not petty in
+  the usual sense.
+
+  \pause
+
+  A petty officer is not {\it necessarily} petty.
+
+\end{frame}
+\begin{frame}
+  \frametitle{Tokenisation /1}
+  I briefly mentioned tokenisation yesterday. Splitting a string of text into tokens
+  is a fundamental first step in any language processing application.
+
+  Most applications do this the same way, by treating spaces and punctuation as
+  special characters, and splitting the text when they are encountered.
+
+  \pause
+
+   Apertium does almost exactly the opposite.
+\end{frame}
+\begin{frame}
+  \frametitle{Tokenisation /2}
+  In Apertium, the characters that make up a word are special: the 
+  {\tt $<$alphabet$>$} tag containst them.
+
+  As long as a word is contained in the dictionary, Apertium continues to 
+  read it. Otherwise, if the characters are in the alphabet, it continues
+  to read, and tokenises as soon as it sees a character not contained in
+  the alphabet.
+
+  \pause
+
+  Spaces are not special, and can be part of any word.
 \end{frame}
 
 \end{document}
