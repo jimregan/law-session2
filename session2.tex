@@ -210,7 +210,7 @@
   XML is designed to be extended. We can use standard tools, available with
   every modern operating system, to extend the language to new situations:
 
-  \begin{exampleblock}{Paradigms are also used to normalise}
+  \begin{exampleblock}{British vs. American spelling}
     \begin{footnotesize}
     \begin{alltt}
       <pardef n="o\_ou"> \\
@@ -231,7 +231,7 @@
     \end{footnotesize}
 \end{exampleblock}
 \end{frame}
-\section{V attribute}
+
 \begin{frame}
   \frametitle{{\it V}ariant}
     The {\it v} (variant) attribute is not part of the standard dictionary definition. It is processed
@@ -246,7 +246,6 @@
   This is not always true.
 \end{frame}
 
-\section{Enclitics}
 \begin{frame}
   \frametitle{Enclitics}
   Many of the Romance languages that Apertium was originally designed for use {\it enclitic pronouns}:
@@ -307,6 +306,63 @@
   \pause
 
   Spaces are not special, and can be part of any word.
+\end{frame}
+\begin{frame}
+  \frametitle{Words to multiwords /1}
+
+  \begin{exampleblock}{Recap: a single entry}
+    \begin{footnotesize}
+    \begin{alltt}
+      ~~<e> \\
+      ~~~~<i>officer</i> \\
+      ~~~~<par n="house\_\_n> \\
+      ~~</e> \\
+    \end{alltt}
+    \end{footnotesize}
+\end{exampleblock}
+\end{frame}
+\begin{frame}
+  \frametitle{Words to multiwords /2}
+
+  \begin{exampleblock}{A multiword entry}
+    \begin{footnotesize}
+    \begin{alltt}
+      ~~<e> \\
+      ~~~~<i>petty<b/>officer</i> \\
+      ~~~~<par n="house\_\_n> \\
+      ~~</e> \\
+    \end{alltt}
+    \end{footnotesize}
+\end{exampleblock}
+\end{frame}
+\begin{frame}
+  \frametitle{The b tag}
+  The {\tt $<$b/$>$} tag represents a {\it blank}.
+
+  It typically represents a space, but can also represent a {\it superblank}:
+  the internal formatting used in a document that might otherwise interfere with
+  processing.
+\end{frame}
+\begin{frame}
+  \frametitle{Inner inflection}
+  Some multiwords may have {\it inner inflection}: the plural of "act of God" is
+  "acts of God".
+
+  \pause
+  \begin{exampleblock}{A multiword entry}
+    \begin{footnotesize}
+    \begin{alltt}
+      <e> \\
+      ~<i>act</i> \\
+      ~<par n="house\_\_n> \\
+      ~<p> \\
+      ~~<l><b/>of<b/>God</l> \\
+      ~~</r><g><b/>of<b/>God</g></r> \\
+      ~</p> \\
+      </e> \\
+    \end{alltt}
+    \end{footnotesize}
+  \end{exampleblock}
 \end{frame}
 
 \end{document}
