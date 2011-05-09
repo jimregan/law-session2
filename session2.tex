@@ -378,7 +378,39 @@
 
 \section{Regular Expressions}
 \begin{frame}
+  \frametitle{Regular Expressions}
   \epigraph{Some people, when confronted with a problem, think "I know, I'll use regular expressions." Now they have two problems.}{Jamie Zawinski}
+\end{frame}
+\begin{frame}
+  \frametitle{Regular Expressions}
+  Regular expressions are a difficult, but powerful tool.
+
+  Usually in Apertium their use is confined to entities that are not words, but which appear in documents and {\it usually}
+  can be passed through unchanged -- numbers, web addresses, etc.
+\end{frame}
+\begin{frame}
+  \frametitle{Example regular expression}
+
+  \begin{exampleblock}{An example}
+    \begin{footnotesize}
+    \begin{alltt}
+      <e> \\
+      ~<re>[0-9]+</re> \\
+      ~<p> \\
+      ~~<l></l> \\
+      ~~<r><s n="num"/></r> \\
+      ~</p> \\
+      </e> \\
+    \end{alltt}
+    \end{footnotesize}
+  \end{exampleblock}
+
+  {\tt $[$0-9$]$} means "any digit from 0 to 9"
+
+  {\tt $+$} means "match one or more"
+  
+  The {\tt $<$p$>$ tag attaches the symbol {\tt num} (number) to 
+  the output.
 \end{frame}
 
 
