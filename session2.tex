@@ -1,0 +1,235 @@
+\documentclass{beamer} %[compress, blue]
+\mode<presentation>
+
+\setbeamercolor{frametitle}{fg=lightred,bg=darkred}
+\setbeamercolor{title}{fg=lightred,bg=darkred}
+\usepackage[spanish,polutonikogreek,english]{babel}
+\usepackage{ucs}
+\usepackage{times}
+\usepackage[T1]{fontenc}
+\usepackage{tipa} %ŋ character
+\usepackage[utf8x]{inputenc}
+\usepackage[absolute,overlay]{textpos}
+\usepackage{graphicx}
+%\usepackage[small,bf]{caption}
+%\usepackage{tabularx}
+\usepackage{tikz}
+\usepackage{url}
+\usepackage{gb4e}
+\usepackage{linguex}
+\usepackage{cgloss4e}
+\usepackage{multirow}
+\usepackage{ragged2e} 
+\usepackage{wasysym}
+\usepackage{alltt}
+
+\usetheme{Warsaw}
+
+\definecolor{darkred}{RGB}{153,0,0}
+\definecolor{lightred}{RGB}{226,200,200}
+\definecolor{ranis}{RGB}{ 128,128,128}
+
+\newcommand\cyrtext[1]{{\fontencoding{T2A}\selectfont #1}}
+\newcommand\grktext[1]{{\fontencoding{LGR}\fontfamily{pmt}\selectfont #1}}
+
+\useoutertheme[subsection=false]{smoothbars}
+
+%\usecolortheme{seahorse} %beetle, albatross, fly, default light, seahorse, crane, dove
+\usecolortheme[named= darkred]{structure}
+
+\setbeamertemplate{footline}[text line]{} % makes the footer EMPTY
+\setbeamertemplate{headline}[text line]{} % header empty
+
+\setbeamersize{text margin left=0.5cm}
+\setbeamertemplate{navigation symbols}{}
+
+
+%\logo{\includegraphics[height=1.6cm]{logoLAW.png}}
+\pgfdeclareimage[height=1.6cm]{logo}{logoLAWnotrans.png}
+
+\setlength{\TPHorizModule}{1mm}
+\setlength{\TPVertModule}{1mm}
+
+\newcommand{\MyLogoCentred}{
+\begin{textblock}{14}(57.2,10.5)
+  \pgfuseimage{logo}
+\end{textblock}
+}
+
+\newcommand{\MyLogoBottomCentred}{
+\begin{textblock}{14}(53.5,70)
+  \pgfuseimage{logo}
+\end{textblock}
+}
+
+\newcommand{\MyLogoBottomRight}{
+\begin{textblock}{14}(112.2,80.0)
+  \pgfuseimage{logo}
+\end{textblock}
+}
+
+\newcommand{\MyLogo}{
+\begin{textblock}{14}(112.2,0.5)
+  \pgfuseimage{logo}
+\end{textblock}
+}
+
+\date{3rd May 2011}
+\title{Session 2: Advanced Dictionaries}
+
+\author{Jimmy O'Regan}
+
+\begin{document}
+
+
+\frame{\titlepage \MyLogoBottomCentred}
+
+
+\begin{frame}
+  \frametitle{Advanced Dictionaries: Table of Contents}
+  \tableofcontents
+\end{frame}
+
+
+\section{Preamble: Recap}
+
+\begin{frame}
+  \frametitle{Recap}
+  Yesterday we saw the general layout of Apertium's dictionaries, and the layout of
+  individual entries in particular.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Dictionary overview}
+
+  \begin{exampleblock}{What a dictionary looks like:}
+    \begin{footnotesize}
+    \begin{alltt}
+      <?xml version="1.0" encoding="UTF-8"?>\\
+      <dictionary>\\
+      ~<alphabet></alphabet>\\
+      ~<sdefs>\\
+      ~~<sdef n="n" c="noun"/>\\
+      ~~...\\
+      ~</sdefs>\\
+      ~<pardefs>\\
+      ~~<pardef n="example\_\_n">\\
+      ~~~...\\
+      ~~</pardef>\\
+      ~</pardefs>\\
+      ~<section id="id" type="standard">\\
+      ~~...\\
+      ~</section>\\
+      </dictionary>\\
+    \end{alltt}
+    \end{footnotesize}
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Entry}
+
+  \begin{exampleblock}{Simple entries:}
+    \begin{footnotesize}
+    \begin{alltt}
+      <e> \\
+      ~~<p> \\
+      ~~~~<l>beer</l> \\
+      ~~~~<r>beer<s n="n"/><s n="sg"/></r> \\
+      ~~</p> \\
+      </e> \\
+      <e> \\
+      ~~<p> \\
+      ~~~~<l>beers</l> \\
+      ~~~~<r>beer<s n="n"/><s n="pl"/></r> \\
+      ~~</p> \\
+      </e>
+    \end{alltt}
+    \end{footnotesize}
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Paradigms}
+
+  \begin{exampleblock}{Paradigms contain common parts:}
+    \begin{footnotesize}
+    \begin{alltt}
+      <pardef n="beer\_\_n"> \\
+      ~~<e> \\
+      ~~~~<p> \\
+      ~~~~~~<l></l> \\
+      ~~~~~~<r><s n="n"/><s n="sg"/></r> \\
+      ~~~~</p> \\
+      ~~</e> \\
+      ~~<e> \\
+      ~~~~<p> \\
+      ~~~~~~<l>s</l> \\
+      ~~~~~~<r><s n="n"/><s n="pl"/></r> \\
+      ~~~~</p> \\
+      ~~</e> \\
+      </pardef>
+    \end{alltt}
+    \end{footnotesize}
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Paradigms can appear anywhere}
+
+  \begin{exampleblock}{Paradigms are also used to normalise}
+    \begin{footnotesize}
+    \begin{alltt}
+      <pardef n="o_ou"> \\
+      ~~<e> \\
+      ~~~~<p> \\
+      ~~~~~~<l>ou</l> \\
+      ~~~~~~<r>ou</r> \\
+      ~~~~</p> \\
+      ~~</e> \\
+      ~~<e r="LR"> \\
+      ~~~~<p> \\
+      ~~~~~~<l>o</l> \\
+      ~~~~~~<r>ou</r> \\
+      ~~~~</p> \\
+      ~~</e> \\
+      </pardef>
+    \end{alltt}
+    \end{footnotesize}
+\end{exampleblock}
+
+  This paradigm allows us to accept American spellings (color/colour), while using 
+  British spellings as the default.
+\end{frame}
+\begin{frame}
+  \frametitle{XML: eXtensible}
+
+  XML is designed to be extended. We can use standard tools, available with
+  every modern operating system, to extend the language to new situations:
+
+  \begin{exampleblock}{Paradigms are also used to normalise}
+    \begin{footnotesize}
+    \begin{alltt}
+      <pardef n="o_ou"> \\
+      ~~<e v="en_GB"> \\
+      ~~~~<p> \\
+      ~~~~~~<l>ou</l> \\
+      ~~~~~~<r>ou</r> \\
+      ~~~~</p> \\
+      ~~</e> \\
+      ~~<e v="en_US"> \\
+      ~~~~<p> \\
+      ~~~~~~<l>o</l> \\
+      ~~~~~~<r>ou</r> \\
+      ~~~~</p> \\
+      ~~</e> \\
+      </pardef>
+    \end{alltt}
+    \end{footnotesize}
+\end{exampleblock}
+
+    The {\it v} (variant) attribute is not part of the standard dictionary definition. It is processed
+    with XSLT so we can generate British and American variants from the same dictionary.
+\end{frame}
+
+\end{document}
